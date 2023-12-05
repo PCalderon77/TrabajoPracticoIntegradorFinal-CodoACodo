@@ -1,0 +1,110 @@
+/*header*/
+.navbar-brand img{
+   max-width: 100px;
+}
+
+.bg-dark{
+   background: rgb(63, 65, 70)!important;
+}
+
+.navbar-dark .navbar-nav .btn-compra-tickets{
+   color: #25a342;
+}
+
+@media (min-width: 992px) {
+   .btn-compra-tickets {
+     border: 1px solid transparent;
+     border-radius: .8rem;
+   }
+   .btn-compra-tickets:hover,
+   .navbar-dark .navbar-nav .btn-compra-tickets.active {
+     background: #25a342;
+   }
+ }
+
+
+/*título*/
+
+.titulo{
+   font-size: 1rem;
+   text-align: center;
+   font-weight: 400;
+}
+.titulo span{
+   display: block;
+   font-weight: 800;
+   font-size: 2rem;
+}
+
+/*Carousel*/
+
+.carousel-item{
+   background-size: cover;
+   background-position: center center;
+   height: 35rem;
+   min-height: 95vh;
+   background-color: black;
+}
+
+.carousel-item img { 
+   opacity: .5; 
+   object-fit: cover;
+}
+
+.carousel-caption{
+   bottom: 3rem;
+   z-index: 10;
+}
+
+/*Formulario orador*/
+
+.btn-form{
+   background: rgb(157, 212, 73);
+   color: white;
+}
+.btn-form:hover{
+   background-color: #25a342;
+   color: white;
+}
+
+/*ubicación*/
+
+.bg-costado{
+   background: rgb(62, 61, 61);
+   padding: 3rem;
+}
+
+/*Footer*/
+
+#main-footer{
+   background: #333a40;
+   color: white;
+   padding: 2rem;
+}
+
+#main-footer .nav-link{
+   color: white;
+   text-align: center;
+}
+
+#main-footer .nav-link:hover{
+   opacity: .7;
+}
+
+/*en tickets*/
+.t-section { padding-top: 7rem; 
+}
+
+.coltsection{
+   padding-left: 3rem;
+   padding-right: 3rem;
+}
+
+/* form para comprar tickets */
+
+#totalPago {
+   font-size: 1.4rem;
+   font-weight: 700;
+ }
+ 
+ 

@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <link rel="stylesheet" href="./resources/css/estilos-propios.css">
+    <title>Proyecto Frontend Boostrap</title>
+</head>
+<body>
+    <header>
+       <nav class="navbar navbar-dark bg-dark fixed-top navbar-expand-lg"><!--Cambio navbar-expand-lg por navbar-expand-sm y queda mejor-->
+        <div class="container">
+           <a class="navbar-brand" href="index.html"><img src="./resources/img/codoacodo-min.png" alt="Codo a Codo">"Conf Bs As"</a>
+           <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" arial-controls="navbarSupportedContent" aria-expanded="true" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse justified-content-end" id="navbarSupportedContent">
+                <ul class="navbar-nav mb-2 mb-lg-0"> <!--nav justify-content-end-->
+                    <li class="nav-item">
+                      <a class="nav-link active" aria-current="page" href="#">La Conferencia</a>
+                    </li>
+                    <li class="nav-item">
+                      <a class="nav-link" href="#">Los oradores</a>
+                    </li>
+                    <li class="nav-item">
+                      <a class="nav-link" href="#">El lugar y la fecha</a>
+                    </li>
+                    <li class="nav-item">
+                      <a class="nav-link">Conviértete en orador</a>
+                    </li>
+                    <li class="nav-item btn-compra-tickets">
+                      <a class="nav-link btn-compra-tickets" href="comprar-tickets.html">Comprar tickets</a>
+                    </li>
+                  </ul>
+            </div>            
+        </div>
+        </nav>
+    </header>
+
+    <main>
+        <div id="carouselExampleCaptions" class="carousel slide mb-4" data-bs-ride="carousel">
+            <div class="carousel-indicators">
+              <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+              <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1" aria-label="Slide 2"></button>
+              <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2" aria-label="Slide 3"></button>
+            </div>
+            <div class="carousel-inner">
+              <div class="carousel-item active">
+                <img src="./resources/img/ba1.jpg" class="d-block w-100 opacity-35" alt="BA1">
+                <div class="carousel-caption d-none d-md-block ">
+                  <h5 class="text-light text-end fs-5">Buenos Aires UNO</h5>
+                  <!--intenté crear clases en "estilosextra.css" pero no las reconoce y si achico la panalla, no se ve el texto del carrusel. Cambio navbar-expand-lg por navbar-expand-sm queda mejor-->
+                  <p class="text-light text-end fs-6 lh-1">Bs. As. llega por primera vez a la Argentina. Un evento para compartir con nuestracomunidad el conocimiento y la experiencia de los expertos que estáncreando el futuro de internet. Ven a conocer a miembros del evento, a otros estudiantes de Codo a Codo y a los oradores de primer nivel quetenemos para ti. Te esperamos!</p>
+                  <p><a class="btn btn-outline-warning mb-3" href="#form-orador">Quiero ser orador</a><a class="btn btn-success ms-2 mb-3" href="comprar-tickets.html">Comprar tickets</a></p>
+                </div>
+              </div>
+              <div class="carousel-item">
+                <img src="./resources/img/ba2.jpg" class="d-block w-100 opacity-5" alt="BA2">
+                <div class="carousel-caption d-none d-md-block">
+                  <h5 class="text-light text-end fs-5">Buenos Aires DOS</h5>
+                  <p class="text-light text-end fs-6 lh-1">Bs. As. llega por primera vez a la Argentina. Un evento para compartir con nuestracomunidad el conocimiento y la experiencia de los expertos que estáncreando el futuro de internet. Ven a conocer a miembros del evento, a otros estudiantes de Codo a Codo y a los oradores de primer nivel quetenemos para ti. Te esperamos!</p>
+                  <p><a class="btn btn-outline-warning mb-3" href="#form-orador">Quiero ser orador</a><a class="btn btn-success ms-2 mb-3" href="comprar-tickets.html">Comprar tickets</a></p>
+                </div>
+              </div>
+              <div class="carousel-item">
+                <img src="./resources/img/ba3.jpg" class="d-block w-100 opacity-5" alt="BA3">
+                <div class="carousel-caption d-none d-md-block">
+                  <h5 class="text-light text-end fs-5">Buenos Aires TRES</h5>
+                  <p class="text-light text-end fs-6 lh-1">Bs. As. llega por primera vez a la Argentina. Un evento para compartir con nuestracomunidad el conocimiento y la experiencia de los expertos que estáncreando el futuro de internet. Ven a conocer a miembros del evento, a otros estudiantes de Codo a Codo y a los oradores de primer nivel quetenemos para ti. Te esperamos!</p>
+                  <p><a class="btn btn-outline-warning mb-3" href="#form-orador">Quiero ser orador</a><a class="btn btn-success ms-2 mb-3" href="comprar-tickets.html">Comprar tickets</a></p>
+                </div>
+              </div>
+            </div>
+            <button class="carousel-control-prev carousel-light" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="prev">
+              <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+              <span class="visually-hidden">Anterior</span>
+            </button>
+            <button class="carousel-control-next carousel-light" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="next">
+              <span class="carousel-control-next-icon" aria-hidden="true"></span>
+              <span class="visually-hidden">Siguiente</span>
+            </button>
+          </div>
+
+        <section class="container mb-4" id="oradores">
+          <h2 class="titulo-gral">CONOCE A LOS ORADORES</h2>
+        </section>
+    </main>
+
+
+    
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+</body>
+</html>
