@@ -175,34 +175,87 @@
             <div class="col-lg-8 col-xl-7">
               <h2 class="titulo">Conviértete en un <span>ORADOR</span></h2>
               <p>Anótate como orador para dar una charla ignite. Cuéntanos de qué quieres hablar!</p>
-              <form action>
+              <form role="form" action="endpoint" method="post">
                 <div class="row gx-2">
                   <div  class="col-md mb-3">
-                    <input type="text" class="form-control" placeholder="Nombre" aria-label="Nombre" required>
+                    <input type="text" class="form-control" placeholder="Nombre" aria-label="Nombre" id="nombre" name="nombreOInput" required>
                   </div>
                   <div class="col-md mb-3">
-                    <input type="text" class="form-control" placeholder="Apellido" aria-label="Apellido" required>
+                    <input type="text" class="form-control" placeholder="Apellido" aria-label="Apellido" id="apellido" name="apellidoOInput" required>
                   </div>                  
                 </div>
                 <div class="row">
                   <div class="col mb-3">
-                    <input type="email" class="form-control" placeholder="Email" aria-label="Email" required>
+                    <input type="email" class="form-control" placeholder="Email" aria-label="Email" id="email" name="emailOInput" required>
                   </div>
                 </div>
                 <div class="row">
                   <div class="col mb-3">
-                    <textarea class="form-control" id="floatingTextarea" placeholder="Sobre qué quieres hablar?" required></textarea>
+                    <input type="datetime-local" class="form-control" placeholder="Fecha" aria-label="Fecha" id="fecha" name="fechaOInput" required>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col mb-3">                  
+                    <textarea class="form-control" id="floatingTextarea" placeholder="Sobre qué quieres hablar?" id="tema" name="temaOInput" required></textarea>
                     <div class="form-text mb-3">Recuerda incluir un título para tu charla</div>
                     <div class="d-grid">
-                      <button type="submit" class="btn btn-lg btn-form">Enviar</button>
+                      <button type="submit" class="btn btn-lg btn-form" onclick="enviarDatos()">Enviar</button>
                     </div>
                   </div>
                 </div>
               </form>
-            </div>
+            </div>            
           </div>
         </section>
           <!-- acá termina formulario-->
+		<section>
+			<!--botón a listado de Oradores-->
+          <div class="col-md-8 d-flex" id="historial">
+<!--			  <a class="btn btn-lg btn-form" href="./listOradores.html" target="_blank">Listado de ORADORES</a> -->
+		  </div>
+		</section>
+          
+		  
+		  <div class="row">
+			<div class="container col-8 justify-content-center">
+				<h3>
+					TODOS LOS USUARIOS REGISTRADOS
+				</h3>
+				<button type="submit" class="btn btn-primary" onclick="listarUsuarios()"> 
+					Listado
+				</button>
+				<table id="tablaDatos" class="table">
+					<thead>
+						<tr>
+							<th>
+								ID
+							</th>
+							<th>
+								NOMBRE
+							</th>
+							<th>
+								APELLIDO
+							</th>
+							<th>
+								EMAIL
+							</th>
+							<th>
+								FECHA
+							</th>
+							<th>
+								TEMA
+							</th>
+						</tr>
+					</thead>
+					<tbody id="cuerpoTabla">
+					</tbody>
+				</table>
+			</div>
+		</div>
+		  
+		  
+		  
+		  
     </main>
 
 
@@ -240,5 +293,86 @@
     
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
     <script src="./resources/js/codigo.js"></script>
+    
+    
+    <script> 
+		function listarUsuarios() {
+			event.preventDefault();
+
+			fetch('endpoint', {
+				method: "GET"
+			})
+				.then(response => response.json())
+				.then(data => renderizarTabla(data))
+				.catch(error => console.log("Error al traer los usuarios ..." + error))
+
+		}
+
+		function enviarDatos() {
+			event.preventDefault();
+			const nombre = document.getElementById('nombre').value;
+			const apellido = document.getElementById('apellido').value;
+			const email = document.getElementById('email').value;
+			const fecha = document.getElementById('fecha').value;
+			const tema = document.getElementById('tema').value;
+			
+			
+			fetch(`endpoint?nombreInput=${nombre}&apellidoInput=${apellido}&emailInput=${email}&fechaInput=${fecha}&temaInput=${tema}`, {
+				method: 'POST'
+				
+			})
+
+				.then(response => response.json())
+				.then(data => renderizarCard([data]))
+				.catch(error => console.error('Error:', error));
+			
+			nombre.value = '';
+			apellido.value = '';
+			email.value = '';
+			fecha.value = '';
+			tema.value = '';
+		}
+
+		function renderizarTabla(data) {
+			const tabla = document.getElementById('cuerpoTabla');
+			tabla.innerHTML = '';
+			console.log(data)
+			data.forEach(element => {
+				console.log(element);
+				const fila = document.createElement('tr');
+				fila.innerHTML = `<td>${element.id}</td>
+                        <td>${element.nombre}</td>
+                        <td>${element.apellido}</td>
+                        <td>${element.email}</td>;
+                        <td>${element.fecha}</td>;
+                        <td>${element.tema}</td>`;
+				tabla.appendChild(fila);
+			});
+		}
+
+		function renderizarCard(data) {
+			const cardContainer = document.getElementById('historial');
+			const cards = cardContainer.getElementsByClassName('card');
+
+			if (cards.length >= 3) {
+				cardContainer.removeChild(cards[0]); // Elimina la card más antigua si hay tres o más
+			}
+
+			data.forEach(element => {
+				const card = document.createElement('div');
+				card.classList.add("card", "text-white", "bg-success", "mb-3", "mr-1");
+				card.style.maxWidth = "18rem";
+
+				card.innerHTML =
+					`<div class="card-header">Usuario guardado</div>
+                    <div class="card-body">
+					<h5 class="card-title">${element.nombre} ${element.apellido} ${element.email} ${element.fecha} ${element.tema}</h5>
+					
+				</div>`;
+
+				cardContainer.appendChild(card);
+			});
+		}
+	</script>
 </body>
 </html>
